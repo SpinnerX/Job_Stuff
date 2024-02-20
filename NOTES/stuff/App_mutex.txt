@@ -1,7 +1,0 @@
-Question asked by: https://boards.greenhouse.io/astranis/jobs/
-
-Question:  What will this pseudo-code print, and why? https://i.imgur.com/6n6aEzm.png * 
-
-My Answer
-- Based on the link shown above we will receive the following output "Foo, Bar, Baz, Qux", in that order. Reason for this is because when we run two threads, and have two mutex's, and what they do is basically allow for one task to finish in thread 1 before moving onto another task in those threads. In this case thread 1 has two tasks to printing Foo, and Bar. Where we lock because this thread is occupied by printing Foo then unlocks and is occupied by Bar, and unlocks after printing bar. Then repeats that same operation but in function 2, to print Baz, and Qux. Therefore in each thread we allow mutex to wait until an occupied task is finished before moving onto another task in specific threads. Without the mutexes we would have race condition issues or incorrect data. In this case if you were to comment those locks and unlocks statements, the output produced would be incorrect.
-
